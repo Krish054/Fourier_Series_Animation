@@ -1,6 +1,6 @@
 # Fourier_Series_Animation
 
-This code takes a function as input from the user and displays a graph, animating both the function and the fourier series for different number of sine and cosine terms.
+This code takes a function as input from the user and displays a graph, animating both the function and it's fourier series for different number of sine and cosine terms.
 
 Download TestProject.nb and open with Mathematica. The entire code is within one input statement, so just click Shift+Enter to execute.
 
