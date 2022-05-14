@@ -1,0 +1,313 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 13.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     11708,        305]
+NotebookOptionsPosition[     11349,        291]
+NotebookOutlinePosition[     11753,        307]
+CellTagsIndexPosition[     11710,        304]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"f", "=", 
+   RowBox[{"DialogInput", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"func", "=", "Null"}], "}"}], ",", 
+     RowBox[{"Column", "[", 
+      RowBox[{"{", 
+       RowBox[{"\"\<Enter a function : \>\"", ",", 
+        RowBox[{"InputField", "[", 
+         RowBox[{
+          RowBox[{"Dynamic", "[", "func", "]"}], ",", 
+          RowBox[{"FieldHint", "\[Rule]", "\"\< \>\""}]}], "]"}], ",", 
+        RowBox[{"Button", "[", 
+         RowBox[{"\"\<Proceed\>\"", ",", 
+          RowBox[{"DialogReturn", "[", "func", "]"}]}], "]"}]}], "}"}], 
+      "]"}]}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"func", "[", 
+    RowBox[{"x_", "/;", 
+     RowBox[{
+      RowBox[{"-", "Pi"}], "<=", "x", "<=", "Pi"}]}], "]"}], "=", "f"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"func", "[", 
+    RowBox[{"x_", "/;", 
+     RowBox[{"x", ">", "Pi"}]}], "]"}], ":=", 
+   RowBox[{"func", "[", 
+    RowBox[{"Mod", "[", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"x", "-", 
+        RowBox[{"2", "Pi"}]}], ")"}], ",", 
+      RowBox[{
+       RowBox[{"-", "2"}], "*", "Pi"}]}], "]"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"func", "[", 
+    RowBox[{"x_", "/;", 
+     RowBox[{"x", "<", 
+      RowBox[{"-", "Pi"}]}]}], "]"}], ":=", 
+   RowBox[{"func", "[", 
+    RowBox[{"Mod", "[", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"x", "+", 
+        RowBox[{"2", "Pi"}]}], ")"}], ",", 
+      RowBox[{"2", "*", "Pi"}]}], "]"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"a0", "=", 
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{"1", "/", 
+      RowBox[{"(", "Pi", ")"}]}], ")"}], 
+    RowBox[{"Integrate", "[", 
+     RowBox[{"f", ",", 
+      RowBox[{"{", 
+       RowBox[{"x", ",", 
+        RowBox[{"-", "Pi"}], ",", "Pi"}], "}"}]}], "]"}]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"an", "=", 
+   RowBox[{"Assuming", "[", 
+    RowBox[{
+     RowBox[{"n", "\[Element]", "Integers"}], " ", ",", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"1", "/", 
+        RowBox[{"(", "Pi", ")"}]}], ")"}], 
+      RowBox[{"Integrate", "[", 
+       RowBox[{
+        RowBox[{"f", "*", 
+         RowBox[{"Cos", "[", 
+          RowBox[{"n", "*", "x"}], "]"}]}], ",", 
+        RowBox[{"{", 
+         RowBox[{"x", ",", 
+          RowBox[{"-", "Pi"}], ",", "Pi"}], "}"}]}], "]"}]}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"bn", "=", 
+   RowBox[{"Assuming", "[", 
+    RowBox[{
+     RowBox[{"n", "\[Element]", "Integers"}], " ", ",", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"1", "/", 
+        RowBox[{"(", "Pi", ")"}]}], ")"}], 
+      RowBox[{"Integrate", "[", 
+       RowBox[{
+        RowBox[{"f", "*", 
+         RowBox[{"Sin", "[", 
+          RowBox[{"n", "*", "x"}], "]"}]}], ",", 
+        RowBox[{"{", 
+         RowBox[{"x", ",", 
+          RowBox[{"-", "Pi"}], ",", "Pi"}], "}"}]}], "]"}]}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"fsformula", " ", "=", " ", 
+   RowBox[{"With", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"a0", "=", "a0"}], ",", 
+       RowBox[{"an", "=", "an"}], ",", 
+       RowBox[{"bn", "=", "bn"}]}], "}"}], ",", 
+     RowBox[{"Defer", "[", 
+      RowBox[{
+       FractionBox["a0", "2"], " ", "+", " ", 
+       RowBox[{
+        UnderoverscriptBox["\[Sum]", 
+         RowBox[{"n", "=", "1"}], "\[Infinity]"], 
+        RowBox[{"an", " ", 
+         RowBox[{"Cos", "[", "nx", "]"}]}]}], " ", "+", " ", 
+       RowBox[{
+        UnderoverscriptBox["\[Sum]", 
+         RowBox[{"n", "=", "1"}], "\[Infinity]"], 
+        RowBox[{"bn", " ", 
+         RowBox[{"Sin", "[", "nx", "]"}]}]}]}], "]"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"fsum", "[", "nmax_", "]"}], ":=", 
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{"a0", "/", "2"}], ")"}], "+", 
+    RowBox[{"Sum", "[", 
+     RowBox[{
+      RowBox[{"an", "*", 
+       RowBox[{"Cos", "[", 
+        RowBox[{"n", "*", "x"}], "]"}]}], ",", 
+      RowBox[{"{", 
+       RowBox[{"n", ",", "1", ",", "nmax"}], "}"}]}], "]"}], "+", 
+    RowBox[{"Sum", "[", 
+     RowBox[{
+      RowBox[{"bn", "*", 
+       RowBox[{"Sin", "[", 
+        RowBox[{"n", "*", "x"}], "]"}]}], ",", 
+      RowBox[{"{", 
+       RowBox[{"n", ",", "1", ",", "nmax"}], "}"}]}], "]"}]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"CreateDialog", "[", "\[IndentingNewLine]", 
+   RowBox[{"{", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"TextCell", "[", 
+      RowBox[{
+       RowBox[{"Row", "[", 
+        RowBox[{"{", 
+         RowBox[{"\"\<The function is  \>\"", ",", 
+          RowBox[{"Style", "[", 
+           RowBox[{
+            RowBox[{"TraditionalForm", "[", "f", "]"}], ",", "Blue", ",", 
+            "15"}], "]"}], ",", "\"\<  and its fourier series is  \>\"", ",", 
+          " ", 
+          RowBox[{"Style", "[", 
+           RowBox[{"fsformula", ",", "Orange", ",", "15"}], "]"}], ",", 
+          "\"\< \>\""}], " ", "}"}], "]"}], ",", 
+       RowBox[{"FontSize", "\[Rule]", "15"}]}], "]"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"TextCell", "[", 
+      RowBox[{"Row", "[", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"Style", "[", 
+          RowBox[{
+          "\"\<In the graph the function is marked in blue\>\"", ",", "Blue", 
+           ",", "12"}], "]"}], ",", 
+         RowBox[{"Style", "[", 
+          RowBox[{
+          "\"\< and fourier series is marked in orange \>\"", ",", "Orange", 
+           ",", "12"}], "]"}]}], "}"}], "]"}], "]"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"Animate", "[", 
+      RowBox[{
+       RowBox[{"Plot", "[", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"func", "[", "x", "]"}], ",", 
+           RowBox[{"fsum", "[", "M", "]"}]}], "\[IndentingNewLine]", "}"}], 
+         ",", 
+         RowBox[{"{", 
+          RowBox[{"x", ",", 
+           RowBox[{
+            RowBox[{"-", "5"}], "*", "Pi"}], ",", 
+           RowBox[{"5", "*", "Pi"}]}], "}"}], ",", 
+         RowBox[{"Ticks", "\[Rule]", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"Subdivide", "[", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"-", "5"}], "Pi"}], ",", 
+              RowBox[{"5", "Pi"}], ",", 
+              RowBox[{"10", 
+               RowBox[{"Pi", "/", 
+                RowBox[{"(", "Pi", ")"}]}]}]}], "]"}], ",", "Automatic"}], 
+           "}"}]}]}], "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"M", ",", "1", ",", 
+           RowBox[{"Dynamic", "@", 
+            RowBox[{"Panel", "[", 
+             RowBox[{
+              RowBox[{"Row", "[", 
+               RowBox[{"{", 
+                RowBox[{
+                 RowBox[{"Style", "[", 
+                  RowBox[{"\"\<Value of N : \>\"", ",", "Red", ",", "13"}], 
+                  "]"}], ",", 
+                 RowBox[{"Style", "[", 
+                  RowBox[{"M", ",", "Red", ",", "13"}], "]"}]}], "}"}], "]"}],
+               ",", 
+              RowBox[{"ImageSize", "\[Rule]", 
+               RowBox[{"{", 
+                RowBox[{"150", ",", "50"}], "}"}]}]}], "]"}]}]}], "}"}], ",", 
+         "0", ",", "20", ",", "2"}], "}"}], ",", 
+       RowBox[{"AnimationRunning", "\[Rule]", "True"}], ",", 
+       RowBox[{"AnimationRate", "->", "2"}]}], "]"}]}], "\[IndentingNewLine]",
+     "}"}], "\[IndentingNewLine]", "]"}], ";"}]}], "Input",
+ CellChangeTimes->{{3.85911911402124*^9, 3.859119129038103*^9}, {
+   3.8591194786646976`*^9, 3.8591194864524555`*^9}, {3.85911953072462*^9, 
+   3.859119560041871*^9}, {3.8591196271041346`*^9, 3.859119676339287*^9}, {
+   3.859119789826598*^9, 3.859119865815895*^9}, {3.8591199595528083`*^9, 
+   3.8591199934419007`*^9}, {3.8591200433575706`*^9, 
+   3.8591200810438023`*^9}, {3.8591201127288723`*^9, 3.859120114145808*^9}, {
+   3.859120180609996*^9, 3.8591202571579127`*^9}, {3.8591202945087442`*^9, 
+   3.859120308743121*^9}, {3.8591203425981226`*^9, 3.859120510238721*^9}, {
+   3.859120564169839*^9, 3.859120620878866*^9}, {3.859120784434976*^9, 
+   3.859120789043869*^9}, {3.8591208764825954`*^9, 3.859120963315814*^9}, {
+   3.8591209974661026`*^9, 3.8591210086403913`*^9}, {3.859121042315301*^9, 
+   3.859121073813336*^9}, {3.8591211079108014`*^9, 3.8591211295632734`*^9}, {
+   3.8591211597258787`*^9, 3.859121200400751*^9}, {3.859121295059749*^9, 
+   3.859121324314534*^9}, {3.8591214373427467`*^9, 3.8591214836478844`*^9}, {
+   3.859121517723956*^9, 3.859121534172927*^9}, {3.8591216193672853`*^9, 
+   3.859121647496291*^9}, {3.8591217762048283`*^9, 3.859121823144157*^9}, {
+   3.8591219628690643`*^9, 3.8591220012895594`*^9}, {3.859124105684292*^9, 
+   3.8591241536633544`*^9}, {3.859124184008439*^9, 3.8591241851405745`*^9}, {
+   3.8591242200638714`*^9, 3.8591242937579203`*^9}, {3.8591244255217257`*^9, 
+   3.8591244562408347`*^9}, {3.859124493605514*^9, 3.8591244953152018`*^9}, {
+   3.859124532052326*^9, 3.8591245326985435`*^9}, {3.8591246048633423`*^9, 
+   3.8591247225026455`*^9}, {3.859124830417502*^9, 3.859124839831396*^9}, {
+   3.8591249005171003`*^9, 3.8591249202234244`*^9}, {3.859124955811124*^9, 
+   3.8591249911432104`*^9}, {3.859125034411769*^9, 3.859125041517379*^9}, {
+   3.8592560814149585`*^9, 3.8592561181929436`*^9}, 3.859256480209272*^9, {
+   3.8592967407627726`*^9, 3.859296787366601*^9}, {3.85929685968643*^9, 
+   3.859296976556282*^9}, {3.859297016996146*^9, 3.859297017387699*^9}, {
+   3.8592970743800764`*^9, 3.859297078105405*^9}, {3.8592971634444103`*^9, 
+   3.85929716489281*^9}, {3.859297196944785*^9, 3.8592972269839425`*^9}, {
+   3.8592972945334578`*^9, 3.859297297952734*^9}, {3.8592973327474637`*^9, 
+   3.8592973633495264`*^9}, {3.8592976019696636`*^9, 3.859297684453952*^9}, {
+   3.859297839663823*^9, 3.8592979277562494`*^9}, {3.859297965230937*^9, 
+   3.859297973901899*^9}, {3.859298066638367*^9, 3.8592981163066344`*^9}, 
+   3.8592981854517064`*^9, {3.8592983185015984`*^9, 3.8592983288172207`*^9}, {
+   3.859298360645973*^9, 3.859298399023018*^9}, {3.8592984755728116`*^9, 
+   3.8592985139334354`*^9}, {3.8592990791745305`*^9, 3.859299101989461*^9}, {
+   3.8592995778473186`*^9, 3.859299612748911*^9}, 3.8592996588782167`*^9, {
+   3.859299703218865*^9, 3.8592998156640453`*^9}, {3.8592999404264016`*^9, 
+   3.8592999434974794`*^9}, {3.85930002456706*^9, 3.859300063951541*^9}, {
+   3.859300095763155*^9, 3.85930009754251*^9}, {3.85930299477867*^9, 
+   3.8593030109051127`*^9}, {3.859303417902072*^9, 3.859303448190937*^9}, {
+   3.8593035123297586`*^9, 3.859303584698608*^9}, {3.8593036581214743`*^9, 
+   3.8593036727102127`*^9}, {3.859549750414171*^9, 3.859549777767011*^9}},
+ CellLabel->"In[1]:=",ExpressionUUID->"6ef9411f-def6-4766-b55f-091e5c8043bb"]
+},
+WindowSize->{1141.2, 574.8},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"13.0 for Microsoft Windows (64-bit) (February 4, 2022)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"0d322cee-8157-44f2-abeb-36b9844e2610"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 10787, 269, 437, "Input",ExpressionUUID->"6ef9411f-def6-4766-b55f-091e5c8043bb"]
+}
+]
+*)
+
